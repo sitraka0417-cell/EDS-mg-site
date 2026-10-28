@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="mg">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>EDS mg – Lesona Kilasy Lehibe</title>
+<meta name="description" content="EDS mg: lesona isan’andro amin’ny teny malagasy, azo vakiana offline. Télécharger ny application Android.">
+<meta name="theme-color" content="#0E0F14">
+<meta property="og:title" content="EDS mg – Lesona Kilasy Lehibe">
+<meta property="og:description" content="Lesona isan’andro amin’ny teny malagasy, azo vakiana offline.">
+<meta property="og:image" content="logo.png">
+<link rel="icon" type="image/png" href="logo.png">
+<link rel="apple-touch-icon" href="logo.png">
+<style>
+  :root {
+    --bg: #f3f4f9;
+    --bg2: #e9e9fb;
+    --card: #ffffff;
+    --line: #e0e3ec;
+    --text: #1b1c25;
+    --muted: #5f6376;
+    --accent: #5b5bd6;
+    --a1: #4f46e5;
+    --a2: #b44cf2;
+    --a3: #e8456b;
+    --shadow: 0 18px 50px rgba(79, 70, 229, .18);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #0e0f14;
+      --bg2: #171830;
+      --card: #1b1c25;
+      --line: #2b2c3a;
+      --text: #ececf1;
+      --muted: #9a9baa;
+      --accent: #8b8bf5;
+      --shadow: 0 18px 50px rgba(0, 0, 0, .55);
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0e0f14; --bg2: #171830; --card: #1b1c25; --line: #2b2c3a;
+    --text: #ececf1; --muted: #9a9baa; --accent: #8b8bf5;
+    --shadow: 0 18px 50px rgba(0, 0, 0, .55);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    background: radial-gradient(1100px 600px at 50% -10%, var(--bg2), var(--bg) 70%) fixed;
+    color: var(--text);
+    line-height: 1.6;
+    min-height: 100vh;
+    padding: env(safe-area-inset-top, 0px) 0 env(safe-area-inset-bottom, 0px);
+  }
+  .wrap { max-width: 760px; margin: 0 auto; padding: 0 20px; }
+
+  header.hero { text-align: center; padding: 64px 0 36px; }
+  .logo {
+    width: 132px; height: 132px; border-radius: 30px; object-fit: cover;
+    box-shadow: var(--shadow); display: block; margin: 0 auto 26px;
+  }
+  h1 {
+    font-size: clamp(2.3rem, 8vw, 3.4rem); line-height: 1.1; font-weight: 800; letter-spacing: -.02em;
+    background: linear-gradient(90deg, #5bc0f8, var(--a2) 55%, var(--a3));
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+  }
+  .tag { margin-top: 10px; font-size: 1.1rem; color: var(--muted); }
+  .sub { margin: 18px auto 0; max-width: 520px; color: var(--muted); }
+
+  .cta { margin: 34px 0 10px; display: flex; flex-direction: column; align-items: center; gap: 12px; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 12px;
+    padding: 17px 34px; border-radius: 999px; text-decoration: none;
+    color: #fff; font-weight: 700; font-size: 1.1rem; letter-spacing: .01em;
+    background: linear-gradient(90deg, var(--a1), var(--a2) 60%, var(--a3));
+    box-shadow: 0 14px 34px rgba(180, 76, 242, .38);
+    transition: transform .15s ease, box-shadow .15s ease;
+  }
+  .btn:hover { transform: translateY(-2px); box-shadow: 0 18px 40px rgba(180, 76, 242, .5); }
+  .btn:active { transform: translateY(0); }
+  .btn:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+  .btn svg { width: 22px; height: 22px; flex: none; }
+  .meta { font-size: .85rem; color: var(--muted); }
+
+  section { margin-top: 44px; }
+  h2 { font-size: 1.25rem; margin-bottom: 16px; letter-spacing: -.01em; }
+
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 14px; }
+  .card {
+    background: var(--card); border: 1px solid var(--line); border-radius: 20px; padding: 20px;
+  }
+  .card .ic {
+    width: 42px; height: 42px; border-radius: 13px; display: grid; place-items: center;
+    background: linear-gradient(135deg, var(--a1), var(--a2)); color: #fff; font-size: 1.2rem; margin-bottom: 12px;
+  }
+  .card h3 { font-size: 1rem; margin-bottom: 4px; }
+  .card p { font-size: .92rem; color: var(--muted); }
+
+  ol.steps { list-style: none; counter-reset: s; display: grid; gap: 12px; }
+  ol.steps li {
+    counter-increment: s; position: relative; background: var(--card); border: 1px solid var(--line);
+    border-radius: 18px; padding: 16px 18px 16px 62px; color: var(--text);
+  }
+  ol.steps li::before {
+    content: counter(s); position: absolute; left: 16px; top: 50%; transform: translateY(-50%);
+    width: 32px; height: 32px; border-radius: 50%; display: grid; place-items: center;
+    background: linear-gradient(135deg, var(--a1), var(--a3)); color: #fff; font-weight: 700;
+  }
+  ol.steps small { display: block; color: var(--muted); margin-top: 2px; }
+
+  footer { text-align: center; color: var(--muted); font-size: .88rem; padding: 48px 0 40px; }
+  footer b { color: var(--text); }
+</style>
+</head>
+<body>
+  <main class="wrap">
+    <header class="hero">
+      <img class="logo" src="logo.png" alt="Logo EDS mg" width="132" height="132">
+      <h1>EDS mg</h1>
+      <p class="tag">Lesona Kilasy Lehibe</p>
+      <p class="sub">Vakio isan’andro ny lesona amin’ny teny malagasy, na dia tsy misy Internet aza aorian’ny fanavaozana voalohany.</p>
+
+      <div class="cta">
+        <a class="btn" href="EDS%20mg.apk" download="EDS mg.apk">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M12 3v12"/><path d="M7 11l5 5 5-5"/><path d="M5 20h14"/>
+          </svg>
+          Télécharger EDS mg
+        </a>
+        <span class="meta">Application Android (.apk) · Dikan-teny 2.3 · Android 5.0 na vaovao</span>
+      </div>
+    </header>
+
+    <section aria-labelledby="fonc">
+      <h2 id="fonc">Inona no ao anatiny?</h2>
+      <div class="grid">
+        <div class="card"><div class="ic">📖</div><h3>Lesona telo</h3><p>Lehibe, Tanora Zokiny ary Zatovo, miaraka amin’ny sary sy ny daty isaky ny pejy.</p></div>
+        <div class="card"><div class="ic">📴</div><h3>Offline</h3><p>Voatahiry ho azy ny lesona rehetra rehefa misy Internet. Misy % mandeha ao anatin’ny boribory.</p></div>
+        <div class="card"><div class="ic">✦</div><h3>Tsianjery 13</h3><p>Ny lohateny sy ny tsianjery isaky ny herinandro, azo zaraina.</p></div>
+        <div class="card"><div class="ic">🖍️</div><h3>Lokoina &amp; note</h3><p>Mandoko soratra ho mavo, mamela note isaky ny andro; voatahiry daholo.</p></div>
+        <div class="card"><div class="ic">📜</div><h3>Baiboly ao anatiny</h3><p>Tsindrio ny andininy dia miseho avy hatrany, misy laharana en couleur.</p></div>
+        <div class="card"><div class="ic">🌗</div><h3>Matroka / Mazava</h3><p>Ovay ny efijery, ary ovay ny haben’ny soratra amin’ny SeekBar.</p></div>
+      </div>
+    </section>
+
+    <section aria-labelledby="inst">
+      <h2 id="inst">Ahoana ny fametrahana?</h2>
+      <ol class="steps">
+        <li>Tsindrio ny bokotra <b>Télécharger EDS mg</b>.</li>
+        <li>Sokafy ny rakitra <b>EDS mg.apk</b> nalaina.<small>Raha manontany ny Android, avelao ny fametrahana avy amin’ity loharano ity (“Source inconnue”).</small></li>
+        <li>Tsindrio <b>Installer</b>, dia sokafy ny app.<small>Rehefa misy Internet, ho tonga ho azy ny fanavaozana lesona.</small></li>
+      </ol>
+    </section>
+
+    <footer>
+      <p>Novolavolain’i <b>Sitraka Nambinintsoa</b></p>
+    </footer>
+  </main>
+</body>
+</html>
